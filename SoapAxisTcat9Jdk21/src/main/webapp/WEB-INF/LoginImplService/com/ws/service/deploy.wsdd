@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from LoginImplService WSDL service -->
+
+  <service name="LoginImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.ws.com"/>
+      <parameter name="wsdlServiceElement" value="LoginImplService"/>
+      <parameter name="schemaQualified" value="http://bean.ws.com,http://service.ws.com"/>
+      <parameter name="wsdlServicePort" value="LoginImpl"/>
+      <parameter name="className" value="com.ws.service.LoginImpl"/>
+      <parameter name="wsdlPortType" value="LoginImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://service.ws.com" xmlns:retNS="http://service.ws.com" xmlns:rtns="http://bean.ws.com" name="validaLogin" qname="operNS:validaLogin" returnQName="retNS:validaLoginReturn" returnType="rtns:Login" soapAction="">
+        <parameter xmlns:pns="http://service.ws.com" xmlns:tns="http://bean.ws.com" qname="pns:log" type="tns:Login"/>
+      </operation>
+      <parameter name="allowedMethods" value="validaLogin"/>
+
+      <typeMapping xmlns:ns="http://bean.ws.com" qname="ns:Login" type="java:com.ws.bean.Login" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
