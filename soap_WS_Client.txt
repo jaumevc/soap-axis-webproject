@@ -1,0 +1,8 @@
+https://spring.io/guides/gs/consuming-web-service/
+
+https://www.baeldung.com/maven-wsdl-stubs
+
+********************************************************************
+
+
+https://www.youtube.com/watch?v=fvKoSySXbEE&t=934s
